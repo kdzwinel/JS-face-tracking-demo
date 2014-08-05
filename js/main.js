@@ -179,7 +179,7 @@
         var orgHeight = 256;
         var newWidth = (rect.width * 2);
         var newHeight = newWidth / orgWidth * orgHeight;
-        var fixTop = rect.height * 0.15;
+        var fixTop = rect.height * 0.2;
         var fixLeft = -rect.width / 2;
         var image = flameFrames[frameCount % flameFrames.length];
 
@@ -260,9 +260,10 @@
     if (!gif.running) {
       //hide previous image
       outputImg.removeAttr('src');
-
       //block 'send to imgur' button
       $('#upload').attr('disabled', 'disabled');
+      //show image placeholder
+      $('#step2 figure').addClass('loading');
 
       gif.on('start', function () {
         $('#conversionResult').text('Working...');
@@ -282,6 +283,8 @@
 
         //enable 'send to imgur' button
         $('#upload').removeAttr('disabled');
+        //hide image placeholder
+        $('#step2 figure').removeClass('loading');
       });
 
       gif.render();
