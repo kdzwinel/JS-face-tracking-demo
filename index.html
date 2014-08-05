@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>JavaScript Face Tracking Demo</title>
+
+    <meta name="Description" content="Face tracking demo in JavaScript"/>
+    <meta property="og:image" content="http://kdzwinel.github.io/JS-face-tracking-demo/img/step1.png"/>
+    <link rel="image_src" href="http://kdzwinel.github.io/JS-face-tracking-demo/img/step1.png"/>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/jquery.Jcrop.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body class="step1">
+
+<div class="container">
+    <div class="alert alert-danger"><strong>Oops!</strong> <span></span></div>
+    <div class="jumbotron">
+        <div id="step1">
+            <h1><i class="glyphicon glyphicon-facetime-video"></i></h1>
+
+            <p class="lead">
+                Make sure that your whole face is visible below.
+                <i class="glyphicon glyphicon-question-sign help" data-placement="bottom"
+                   data-content="<img src='img/step1.png' />" data-html="true"></i>
+            </p>
+
+            <figure class="not-ready">
+                <video  width="240" autoplay></video>
+                <canvas width="240" class="visible"></canvas>
+                <canvas width="240" class="hidden"></canvas>
+            </figure>
+
+            <button class="btn btn-lg btn-success" id="record" disabled>Record</button>
+            <button class="btn btn-lg btn-success" disabled id="convert">Convert to GIF</button>
+        </div>
+        <div id="step2">
+            <h1><i class="glyphicon glyphicon glyphicon-cog"></i></h1>
+
+            <p class="lead">
+                Your recording is being converted to a gif.
+            </p>
+
+            <figure class="loading">
+                <img>
+            </figure>
+
+            <div class="progress">
+                <div class="progress-bar" id="progressbar"></div>
+            </div>
+
+            <blockquote>
+                <p id="conversionResult"></p>
+            </blockquote>
+
+            <button class="btn btn-lg btn-default start-over">Start over</button>
+            <button class="btn btn-lg btn-success" id="upload" disabled>Upload to Imgur.com</button>
+        </div>
+        <div id="step3">
+            <h1><i class="glyphicon glyphicon-send"></i></h1>
+
+            <p class="lead">Your gif is being uploaded to Imgur.com</p>
+
+            <figure>
+                <img>
+            </figure>
+
+            <blockquote>
+                <p></p>
+            </blockquote>
+
+            <button class="btn btn-lg btn-default start-over">Start over</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#" data-step="1">#1 <i class="glyphicon glyphicon-facetime-video"></i></a></li>
+            <li class="disabled"><a href="#" data-step="2">#2 <i class="glyphicon glyphicon-cog"></i></a></li>
+            <li class="disabled"><a href="#" data-step="3">#3 <i class="glyphicon glyphicon-send"></i></a></li>
+        </ul>
+        <h3 class="text-muted">JavaScript Face Tracking Demo</h3>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Step #1 - getUserMedia and tracking.js</h4>
+
+            <p>getUserMedia is a HTML5 API that allows web apps to access user's camera and microphone. Read more on <a
+                    href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">HTML5 Rocks</a>.</p>
+
+            <p><a href="https://github.com/eduardolundgren/tracking.js">tracking.js</a> was used to detect and track user's face, but that's just one of the things that this amazing library is capable of.</p>
+
+            <h4>Step #2 - gif.js</h4>
+
+            <p><a href="https://github.com/jnordberg/gif.js">gif.js</a> converted array of images to a gif. It's very fast because it splits up the work between multiple web workers.</p>
+
+            <h4>Step #3 - Imgur.com API</h4>
+
+            <p><a href="https://api.imgur.com/">Imgur.com</a> offers free and extremely easy to use API that allows to upload and browse images.</p>
+
+            <h4>More&hellip;</h4>
+
+            <p>I've made a <a href="https://www.youtube.com/watch?v=ttn437BlEbo">short video about this project</a> that demonstrates how it works.</p>
+            <p>If you found this project interesting, you'll probably also like my <a href="https://www.youtube.com/watch?v=ttn437BlEbo">JavaScript OCR Demo</a>.</p>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Support</h4>
+
+            <p>This demo requires <a href="http://caniuse.com/stream">getUserMedia</a>, <a
+                    href="http://caniuse.com/typedarrays">typed arrays</a>, <a
+                    href="http://caniuse.com/fileapi">file API</a> and <a href="http://caniuse.com/webworkers">web workers</a>. It should work (as for 08.2014) on Chrome, Firefox and Opera. Both desktop and mobile.</p>
+
+            <h4>Source code</h4>
+
+            <p>This demo is open source, and is hosted on <a href="https://github.com/kdzwinel/JS-face-tracking-demo">GitHub</a>.
+                Feel free to fork it, report issues and share your ideas for improvements.</p>
+
+            <h4>Social media</h4>
+            <!-- Github button -->
+            <iframe src="http://ghbtns.com/github-btn.html?user=kdzwinel&repo=JS-face-tracking-demo&type=watch&count=true"
+                    allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+            <!-- Twitter button -->
+            <a href="https://twitter.com/share" class="twitter-share-button"
+               data-url="http://kdzwinel.github.io/JS-face-tracking-demo/" data-via="kdzwinel">Tweet</a>
+
+            <!-- G+ button -->
+            <div class="g-plusone" data-size="medium" data-href="http://kdzwinel.github.io/JS-face-tracking-demo/"></div>
+
+            <!-- FB button -->
+            <div class="fb-like" data-href="http://kdzwinel.github.io/JS-face-tracking-demo/" data-layout="button_count"
+                 data-action="like"
+                 data-show-faces="false" data-share="true"></div>
+            <div id="fb-root"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>
+            Konrad Dzwinel &middot;
+            <a href="https://github.com/kdzwinel"><i class="fa fa-github"></i></a> &middot;
+            <a href="http://stackoverflow.com/users/1143495/konrad-dzwinel"><i class="fa fa-stack-overflow"></i></a> &middot;
+            <a href="http://www.linkedin.com/pub/konrad-dzwinel/53/599/366/en"><i class="fa fa-linkedin"></i></a> &middot;
+            <a href="https://twitter.com/kdzwinel"><i class="fa fa-twitter"></i></a>
+        </p>
+    </div>
+
+</div>
+<!-- /container -->
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="js/vendor/modernizr.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/tracking-min.js"></script>
+<script src="js/vendor/data/face-min.js"></script>
+<script src="js/vendor/gif.js"></script>
+<script src="js/vendor/gif.worker.js"></script>
+
+<script src="js/main.js"></script>
+
+<!-- Social -->
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');</script>
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
