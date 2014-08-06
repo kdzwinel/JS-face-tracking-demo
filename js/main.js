@@ -10,6 +10,7 @@
   var pictureWidth = 240;
   var pictureHeight = 180;
 
+  //load all flame animation frames
   function loadImages() {
     var promises = [];
 
@@ -53,7 +54,7 @@
   function searchForFrontCamera() {
     var deferred = new $.Deferred();
 
-    //MediaStreamTrack.getSources seams to be supported only by Chrome
+    //MediaStreamTrack.getSources seems to be supported only by Chrome
     if (MediaStreamTrack && MediaStreamTrack.getSources) {
       MediaStreamTrack.getSources(function (sources) {
         var rearCameraIds = sources.filter(function (source) {
@@ -215,7 +216,7 @@
       height: scaledHeight
     });
 
-    //try to dump frame every 100ms
+    //try to dump a frame every 100ms
     var interval = 100, ticks = 3500 / interval, lastFrameTime = Date.now();
     var timer = setInterval(function () {
       ticks--;
@@ -318,7 +319,7 @@
           $('#step3 img').attr('src', 'https://imgur.com/' + id + '.gif');
 
           var url = 'https://imgur.com/' + id;
-          $('#step3 blockquote p').html('Done! Your gif is available here: <a href="' + url + '" target="_blank">' + url + "</a>");
+          $('#step3 blockquote p').html('Done! Your GIF is available here: <a href="' + url + '" target="_blank">' + url + "</a>");
         },
         error: function (xhr, type, message) {
           showError('Upload failed! Error: "' + message + '".');
