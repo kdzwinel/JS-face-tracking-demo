@@ -312,7 +312,7 @@
         data: {
           image: (reader.result).replace('data:image/gif;base64,', ''),
           type: 'base64',
-          description: 'Crated with http://kdzwinel.github.io/JS-face-tracking-demo/'
+          description: 'Created with http://kdzwinel.github.io/JS-face-tracking-demo/'
         },
         success: function (result) {
           var id = result.data.id;
